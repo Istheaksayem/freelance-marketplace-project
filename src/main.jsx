@@ -7,27 +7,40 @@ import { RouterProvider } from "react-router/dom";
 import RootLayout from './Layout/RootLayout.jsx';
 import Home from './components/Home/Home.jsx';
 import AllJobs from './components/AllJobs/AllJobs.jsx';
+import AddJobs from './components/AddJobs/AddJobs.jsx';
+import MyTasks from './components/MyTasks/MyTasks.jsx';
+import AuthProvider from './Context/AuthProvider.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-   Component:RootLayout,
-   children:[
-    {
-      index:true,
-      Component:Home
-    },
-    {
-      path:"allJobs",
-      Component:AllJobs
-    }
-   ]
+    Component: RootLayout,
+    children: [
+      {
+        index: true,
+        Component: Home
+      },
+      {
+        path: "allJobs",
+        Component: AllJobs
+      },
+      {
+        path: "addJob",
+        Component: AddJobs
+      },
+      {
+        path: "myTasks",
+        Component: MyTasks
+      },
+    ]
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
- <RouterProvider router={router} />,
+    <AuthProvider>
+      <RouterProvider router={router} />,
+    </AuthProvider>
   </StrictMode>,
 )

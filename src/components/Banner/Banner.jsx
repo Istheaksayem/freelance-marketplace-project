@@ -21,13 +21,13 @@ const Banner = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
 
-      <div className="relative z-10 container mx-auto px-6 md:px-12 max-w-lg ">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 max-w-lg">
         {/* Title */}
         <motion.h1
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="text-4xl md:text-5xl font-bold mb-4 leading-snug"
         >
           Job Board <span className="font-normal">and</span> <br />
@@ -40,7 +40,7 @@ const Banner = () => {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="inline-block bg-yellow-100 text-yellow-700 font-medium px-4 py-1 rounded-full mb-4"
         >
           ⭐ 4.85 out of 5 stars based on 278 ratings
@@ -51,7 +51,7 @@ const Banner = () => {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="text-gray-200 mb-6"
         >
           Build a professional job board similar to{" "}
@@ -65,7 +65,7 @@ const Banner = () => {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="flex flex-wrap gap-4 items-center mb-6"
         >
           <button className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full shadow transition">
@@ -81,7 +81,7 @@ const Banner = () => {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
           className="flex flex-wrap gap-6 text-gray-300"
         >
           <div className="flex items-center gap-2">
