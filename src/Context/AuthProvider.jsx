@@ -14,10 +14,12 @@ const AuthProvider = ({children}) => {
     }
 
     const signInUser =(email,password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
      const updateUser =(updateData) =>{
+        setLoading(true)
             return updateProfile(auth.currentUser,updateData)
         }
 
@@ -29,6 +31,7 @@ const AuthProvider = ({children}) => {
 
         const unsubscribe =onAuthStateChanged(auth,(currentUser)=>{
             setUser(currentUser)
+            setLoading(false)
         })
 
         return () =>{
@@ -40,6 +43,7 @@ const AuthProvider = ({children}) => {
         signInUser,
         updateUser,
         logout,
+        setUser,
         user,
         loading
     }

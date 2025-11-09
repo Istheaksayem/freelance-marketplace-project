@@ -1,9 +1,10 @@
 import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Register = () => {
-    const { createUser, setUser, updateUser } = use(AuthContext)
+    const { createUser, setUser, updateUser,setLoading } = use(AuthContext)
 
     const [error, setError] = useState('')
 
@@ -34,20 +35,22 @@ const Register = () => {
                 // console.log(user);
                 updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
-
                         setUser({ ...user, displayName: name, photoURL: photo })
+                        toast.success("Registration successful!")
                         navigate("/")
+                        setLoading(false)
                     })
                     .catch((error) => {
                         console.log(error)
 
                     });
 
+
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                alert(errorCode, errorMessage)
+                toast(errorCode, errorMessage)
             });
     }
     return (
