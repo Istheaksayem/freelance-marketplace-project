@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { use, useState } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
+
+    const {signInUser} =use(AuthContext)
+    const [error,setError]=useState("")
+
+    const handleLogin =(e) =>{
+        e.preventDefault()
+        const form =e.target;
+        const email =form.email.value 
+        const password =form.password.value 
+        console.log({email,password})
+
+        signInUser(email, password)
+            .then((result) => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // alert(errorCode, errorMessage)
+                setError(errorMessage, errorCode)
+            });
+
+    }
+
+
     return (
           <div className='flex justify-center min-h-screen items-center'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
-                <form  className="card-body">
+                <form onSubmit={handleLogin} className="card-body">
                     <h2 className='text-2xl font-bold text-center'>Login</h2>
                     <p className='text-center font-semibold'>Don't have an account ? <Link to="/register" className='text-primary'>Register</Link></p>
                     <fieldset className="fieldset">
@@ -29,6 +56,8 @@ const Login = () => {
                             placeholder="Password"
                             required
                         />
+
+                        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                       
                         <div>
                             <a className="link link-hover">Forgot password?</a>
