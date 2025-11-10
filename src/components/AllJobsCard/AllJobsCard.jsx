@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from "framer-motion";
+import { Link } from 'react-router';
 
-
-const JobCard = ({ job }) => {
-    const { coverImage,title,category } = job
+const AllJobsCard = ({allJob}) => {
+    const {_id,coverImage,title,category,postedBy,summary} =allJob;
     return (
-        <motion.div
+       <motion.div
       whileHover={{
         scale: 1.05,                 
         y: -8,                       
@@ -39,22 +38,38 @@ const JobCard = ({ job }) => {
           {title}
         </motion.h2>
         <motion.p
-          
+          className="font-semibold"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-           Category:  {category}
+         Category: {category}
+        </motion.p>
+        <motion.p
+         
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Posted by:{postedBy}
+        </motion.p>
+        <motion.p
+          className="card-title text-gray-600"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {summary}
         </motion.p>
 
         <div className="card-actions w-full mt-3">
-          <button className="btn btn-primary w-full">
+          <Link to={`/allJobs/${_id}`} className="btn btn-primary w-full">
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </motion.div>
     );
 };
 
-export default JobCard;
+export default AllJobsCard;
