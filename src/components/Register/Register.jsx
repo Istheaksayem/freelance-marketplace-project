@@ -63,7 +63,12 @@ const Register = () => {
     const handleGoogleSign =() =>{
         signInWithPopup(auth,googleProvider)
         .then(result =>{
-            console.log(result.user)
+           const user =result.user;
+           console.log(user);
+           toast.success('login successful with Google')
+           navigate("/")
+           setLoading(false)
+
         })
     }
     return (

@@ -1,14 +1,16 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const auth =getAuth()
 const googleProvider=new GoogleAuthProvider();
 
 const Login = () => {
+    const navigate=useNavigate()
 
-    const {signInUser} =use(AuthContext)
+    const {signInUser,setLoading} =use(AuthContext)
     const [error,setError]=useState("")
 
     const handleLogin =(e) =>{
@@ -34,7 +36,11 @@ const Login = () => {
         const handleGoogleSign =() =>{
             signInWithPopup(auth,googleProvider)
             .then(result =>{
-                console.log(result.user)
+               const user =result.user;
+                         console.log(user);
+                         toast.success('login successful with Google')
+                         navigate("/")
+                         setLoading(false)
             })
         }
     
