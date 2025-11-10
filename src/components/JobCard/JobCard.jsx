@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from "framer-motion";
+import { Link } from 'react-router';
 
 
 const JobCard = ({ job }) => {
-    const { coverImage,title,category } = job
+    const {_id, coverImage,title,category } = job
     return (
         <motion.div
       whileHover={{
@@ -48,9 +49,9 @@ const JobCard = ({ job }) => {
         </motion.p>
 
         <div className="card-actions w-full mt-3">
-          <button className="btn btn-primary w-full">
+          <Link to={`/allJobs/${_id}`} className="btn btn-primary w-full bg-green-600 hover:bg-green-700">
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </motion.div>

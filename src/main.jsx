@@ -14,6 +14,7 @@ import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import { ToastContainer } from 'react-toastify';
 import JobDetails from './components/JobDetails/JobDetails.jsx';
+import PrivateRouter from './components/PrivateRoute/PrivateRoute.jsx';
 
 
 const router = createBrowserRouter([
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/allJobs/:id",
-        element:<JobDetails></JobDetails>
+        element:<PrivateRouter><JobDetails></JobDetails></PrivateRouter>
       }
     ]
   },

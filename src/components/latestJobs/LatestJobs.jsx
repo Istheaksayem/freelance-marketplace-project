@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { use } from 'react';
 import JobCard from '../JobCard/JobCard';
 import { motion } from "framer-motion";

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { use } from 'react';
 import AllJobsCard from '../AllJobsCard/AllJobsCard';
 import { motion } from "framer-motion";
