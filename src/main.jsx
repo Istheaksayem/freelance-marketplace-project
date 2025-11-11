@@ -16,6 +16,7 @@ import JobDetails from './components/JobDetails/JobDetails.jsx';
 import PrivateRouter from './components/PrivateRoute/PrivateRoute.jsx';
 import MyAcceptedTasks from './components/MyAcceptedTasks/MyAcceptedTasks.jsx';
 import ErrorPage404 from './components/ErrorPage404/ErrorPage404.jsx';
+import MyAddedJob from './components/MyAddedJob/MyAddedJob.jsx';
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:"*",
         Component:ErrorPage404
+      },
+      {
+        path:"myAddedJob",
+      element:<PrivateRouter><MyAddedJob></MyAddedJob></PrivateRouter>
       }
     ]
   },
