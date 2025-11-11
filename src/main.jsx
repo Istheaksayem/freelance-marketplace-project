@@ -8,13 +8,13 @@ import RootLayout from './Layout/RootLayout.jsx';
 import Home from './components/Home/Home.jsx';
 import AllJobs from './components/AllJobs/AllJobs.jsx';
 import AddJobs from './components/AddJobs/AddJobs.jsx';
-import MyTasks from './components/MyTasks/MyTasks.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import { ToastContainer } from 'react-toastify';
 import JobDetails from './components/JobDetails/JobDetails.jsx';
 import PrivateRouter from './components/PrivateRoute/PrivateRoute.jsx';
+import MyAcceptedTasks from './components/MyAcceptedTasks/MyAcceptedTasks.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,19 +36,19 @@ const router = createBrowserRouter([
       },
       {
         path: "myTasks",
-        Component: MyTasks
+        element: <PrivateRouter><MyAcceptedTasks></MyAcceptedTasks></PrivateRouter>
       },
       {
-        path:"login",
-        Component:Login
+        path: "login",
+        Component: Login
       },
       {
-        path:"register",
-        Component:Register
+        path: "register",
+        Component: Register
       },
       {
-        path:"/allJobs/:id",
-        element:<PrivateRouter><JobDetails></JobDetails></PrivateRouter>
+        path: "/allJobs/:id",
+        element: <PrivateRouter><JobDetails></JobDetails></PrivateRouter>
       }
     ]
   },

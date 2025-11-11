@@ -1,10 +1,10 @@
 import React, { use, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
+import {  useParams } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 
 const JobDetails = () => {
-    const {user} =use(AuthContext)
+    const { user } = use(AuthContext)
     const jobModelRef = useRef(null)
 
     const { id } = useParams();
@@ -22,7 +22,7 @@ const JobDetails = () => {
         jobModelRef.current.showModal()
     }
 
-      const handleApplyJob = (e) => {
+    const handleApplyJob = (e) => {
         e.preventDefault();
         const form = e.target;
         const title = form.title.value;
@@ -43,12 +43,29 @@ const JobDetails = () => {
             postedDate
         };
 
-        console.log("Form Data Submitted:", appliedJob);
-        toast.success("Job applied successfully (frontend demo)");
+           // Backend e save korar fetch
+    fetch('http://localhost:3000/accepted-jobs',{
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(appliedJob)
+    })
+    .then(res =>res.json())
+    .then(data =>{
+        console.log('saved to db',data)
+        // console.log("Form Data Submitted:", appliedJob);
+        toast.success("Job accepted successfully ");
         form.reset();
         jobModelRef.current.close();
-    };
+    })
+    .catch(error =>{
+        console.log(error)
+    })
 
+
+    };
+ 
     return (
         <div className="max-w-2xl mx-auto p-6  rounded-lg shadow-md mt-10 mb-10">
             <img
@@ -113,7 +130,7 @@ const JobDetails = () => {
                                 name="coverImage"
                                 placeholder="Cover Image URL"
                                 className="input input-bordered w-full"
-                            
+
                             />
 
                             <input
