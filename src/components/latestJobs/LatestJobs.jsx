@@ -12,9 +12,9 @@ const LatestJobs = ({ latestJobsPromise }) => {
                 initial={{ x:200, opacity: 0, }}    
                 animate={{ x:0, opacity: 1,  }}      
                 transition={{ duration: 2 }}        
-                className="text-4xl font-bold text-blue-600 text-center"
+                className="text-4xl font-bold text-center"
             >
-                Recent job
+                Recent <span className='text-green-600'>job</span> 
             </motion.h1>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {

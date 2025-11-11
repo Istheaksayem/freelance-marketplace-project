@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import JobDetails from './components/JobDetails/JobDetails.jsx';
 import PrivateRouter from './components/PrivateRoute/PrivateRoute.jsx';
 import MyAcceptedTasks from './components/MyAcceptedTasks/MyAcceptedTasks.jsx';
+import ErrorPage404 from './components/ErrorPage404/ErrorPage404.jsx';
 
 
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/allJobs/:id",
         element: <PrivateRouter><JobDetails></JobDetails></PrivateRouter>
+      },
+      {
+        path:"*",
+        Component:ErrorPage404
       }
     ]
   },

@@ -17,7 +17,7 @@ const AllJobsData = ({allJobsPromise}) => {
             >
                All jobs here
             </motion.h1>
-             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8'>
                 {
                    allJobs.map(allJob =><AllJobsCard
                    key={allJob._id}
