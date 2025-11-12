@@ -6,7 +6,7 @@ const MyAcceptedTasks = () => {
     const [acceptedJobs, setAcceptedJobs] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/accepted-jobs')
+        fetch('https://freelance-marketplace-server-zeta.vercel.app/accepted-jobs')
             .then(res => res.json())
             .then(data => setAcceptedJobs(data))
             .catch(err => console.error(err));
@@ -17,7 +17,7 @@ const MyAcceptedTasks = () => {
 
         // Remove from Database
         try {
-            await fetch(`http://localhost:3000/accepted-jobs/${id}`, {
+            await fetch(`https://freelance-marketplace-server-zeta.vercel.app/accepted-jobs/${id}`, {
                 method: 'DELETE'
             });
         } catch (error) {

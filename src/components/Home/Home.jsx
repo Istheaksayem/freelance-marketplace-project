@@ -2,7 +2,7 @@ import React from 'react';
 import Banner from '../Banner/Banner';
 import LatestJobs from '../latestJobs/LatestJobs';
 
-const latestJobsPromise =fetch('http://localhost:3000/latest-jobs')
+const latestJobsPromise =fetch('https://freelance-marketplace-server-zeta.vercel.app/latest-jobs')
 .then(res =>res.json());
 
 

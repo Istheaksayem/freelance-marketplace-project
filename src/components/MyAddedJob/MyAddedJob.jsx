@@ -13,14 +13,14 @@ const MyAddedJobs = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/myAddedJobs?email=${user.email}`)
+            fetch(`https://freelance-marketplace-server-zeta.vercel.app/myAddedJobs?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => setJobs(data));
         }
     }, [user?.email]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/allJobs?sort=${sortOrder}`)
+        fetch(`https://freelance-marketplace-server-zeta.vercel.app/allJobs?sort=${sortOrder}`)
             .then((res) => res.json())
             .then((data) => setJobs(data));
     }, [sortOrder]);

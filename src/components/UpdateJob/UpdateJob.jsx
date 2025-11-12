@@ -9,7 +9,7 @@ const UpdateJob = () => {
 
   // Get Single Job Info
   useEffect(() => {
-    fetch(`http://localhost:3000/allJobs/${id}`)
+    fetch(`https://freelance-marketplace-server-zeta.vercel.app/allJobs/${id}`)
       .then((res) => res.json())
       .then((data) => setJob(data));
     // setPreviewSummary(data.summary)
@@ -27,7 +27,7 @@ const UpdateJob = () => {
       coverImage: form.coverImage.value,
     };
 
-    fetch(`http://localhost:3000/jobs/${id}`, {
+    fetch(`https://freelance-marketplace-server-zeta.vercel.app/jobs/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedJob),

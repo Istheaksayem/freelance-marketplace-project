@@ -29,7 +29,7 @@ const AddJob = () => {
     };
 
     // এখন Backend এ পাঠাও
-    fetch('http://localhost:3000/jobs', {
+    fetch('https://freelance-marketplace-server-zeta.vercel.app/jobs', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newJob)

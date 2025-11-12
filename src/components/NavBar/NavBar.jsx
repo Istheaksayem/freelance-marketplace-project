@@ -5,34 +5,39 @@ import { toast } from 'react-toastify';
 
 const NavBar = () => {
 
-    const {user,logout}=use(AuthContext)
+    const { user, logout } = use(AuthContext)
     const [theme, setTheme] = useState('light')
 
     useEffect(() => {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme) {
-        setTheme(storedTheme);
-      }
+        const storedTheme = localStorage.getItem('theme');
+        const html = document.querySelector("html")
+        
+        if (storedTheme) {
+            setTheme(storedTheme);
+            html.setAttribute("data-theme",storedTheme)
+        }
     }, []);
 
     useEffect(() => {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+
+
     }, [theme]);
 
 
-    const handleTheme=(checked) =>{
+    const handleTheme = (checked) => {
         // const html =document.querySelector("html")
-        if(checked){
-        setTheme("dark")
+        if (checked) {
+            setTheme("dark")
         }
-        else{
+        else {
             setTheme("light")
         }
     }
 
-    const handleLogout =() =>{
-         logout()
+    const handleLogout = () => {
+        logout()
             .then(() => {
                 toast("logout successfully")
             })
@@ -49,7 +54,7 @@ const NavBar = () => {
         <li><NavLink to="/myTasks">My Accepted Tasks</NavLink></li>
         <li><NavLink to="/myAddedJob">My Added Job</NavLink></li>
 
-       
+
 
     </>
     return (
@@ -74,13 +79,13 @@ const NavBar = () => {
             </div>
             <div className="navbar-end gap-1">
                 <input
-                onChange={(e) =>handleTheme(e.target.checked)} 
-                type="checkbox" 
-                // defaultChecked={localStorage.getItem('theme')==="dark"}
-                checked={theme ==='dark'}
-                className="toggle"
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    type="checkbox"
+                    // defaultChecked={localStorage.getItem('theme')==="dark"}
+                    checked={theme === 'dark'}
+                    className="toggle"
                 />
-             {user ? <button onClick={handleLogout} className="btn btn-primary">Sign Out</button> : <Link to="/login" className="btn btn-primary">login</Link>}
+                {user ? <button onClick={handleLogout} className="btn btn-primary">Sign Out</button> : <Link to="/login" className="btn btn-primary">login</Link>}
 
             </div>
         </div>

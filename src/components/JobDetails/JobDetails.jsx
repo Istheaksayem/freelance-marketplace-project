@@ -11,7 +11,7 @@ const JobDetails = () => {
 
   // Fetch single job details
   useEffect(() => {
-    fetch(`http://localhost:3000/allJobs/${id}`)
+    fetch(`https://freelance-marketplace-server-zeta.vercel.app/allJobs/${id}`)
       .then((res) => res.json())
       .then((data) => setJob(data));
   }, [id]);
@@ -42,7 +42,7 @@ const JobDetails = () => {
       acceptedAt: new Date(),
     };
 
-    fetch("http://localhost:3000/accepted-jobs", {
+    fetch("https://freelance-marketplace-server-zeta.vercel.app/accepted-jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
