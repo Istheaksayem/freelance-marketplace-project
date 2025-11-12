@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "addJob",
-        Component: AddJobs
+        element:<PrivateRouter><AddJobs></AddJobs></PrivateRouter>
       },
       {
         path: "myTasks",

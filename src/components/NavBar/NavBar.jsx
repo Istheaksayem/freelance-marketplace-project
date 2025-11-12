@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
@@ -6,6 +6,30 @@ import { toast } from 'react-toastify';
 const NavBar = () => {
 
     const {user,logout}=use(AuthContext)
+    const [theme, setTheme] = useState('light')
+
+    useEffect(() => {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+        setTheme(storedTheme);
+      }
+    }, []);
+
+    useEffect(() => {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }, [theme]);
+
+
+    const handleTheme=(checked) =>{
+        // const html =document.querySelector("html")
+        if(checked){
+        setTheme("dark")
+        }
+        else{
+            setTheme("light")
+        }
+    }
 
     const handleLogout =() =>{
          logout()
@@ -48,7 +72,14 @@ const NavBar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end gap-1">
+                <input
+                onChange={(e) =>handleTheme(e.target.checked)} 
+                type="checkbox" 
+                // defaultChecked={localStorage.getItem('theme')==="dark"}
+                checked={theme ==='dark'}
+                className="toggle"
+                />
              {user ? <button onClick={handleLogout} className="btn btn-primary">Sign Out</button> : <Link to="/login" className="btn btn-primary">login</Link>}
 
             </div>
