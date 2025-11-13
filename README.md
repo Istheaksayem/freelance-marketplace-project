@@ -14,3 +14,19 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+PROJECT NAME:
+# Freelance Marketplace
+
+Live site URL:
+
+
+
+# Features:
+
+Users can add new job posts with title, category, and summary.  
+Logged-in users can view only the jobs they posted.  
+Light and dark theme toggle available.  
+Users can accept or cancel jobs from the Accepted Jobs page.  
+Responsive design for mobile, tablet, and desktop.  
