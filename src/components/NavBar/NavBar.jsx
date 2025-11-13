@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import userImg from '../../assets/user.png'
 
 const NavBar = () => {
 
@@ -11,10 +12,10 @@ const NavBar = () => {
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
         const html = document.querySelector("html")
-        
+
         if (storedTheme) {
             setTheme(storedTheme);
-            html.setAttribute("data-theme",storedTheme)
+            html.setAttribute("data-theme", storedTheme)
         }
     }, []);
 
@@ -85,6 +86,15 @@ const NavBar = () => {
                     checked={theme === 'dark'}
                     className="toggle"
                 />
+              <div className='tooltip tooltip-bottom' data-tip={user?.displayName ||"user"}> 
+                  <img
+                    className='w-12 h-12 rounded-full cursor-pointer'
+                    src={user?.photoURL ? user.photoURL : userImg}
+                    alt="User Avatar"
+                />
+                
+              </div>
+
                 {user ? <button onClick={handleLogout} className="btn btn-primary">Sign Out</button> : <Link to="/login" className="btn btn-primary">login</Link>}
 
             </div>
